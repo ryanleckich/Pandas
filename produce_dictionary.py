@@ -48,30 +48,37 @@ produce_dictionary = {
 
 print(" Question 1")
 
-labels = ["Cost Per Pound", "Quantity Sold", "Total Sale"]
+labels = ["Cost Per Pound", "Quantity Sold", "Total Sales"]
 
 df = pd.DataFrame(produce_dictionary, index=labels)
+df = df.T
+
+df["Quantity Sold"] = df["Quantity Sold"].astype(int)
+df["Total Sales"] = df["Total Sales"].astype(int)
+
+
+small = df["Total Sales"].idxmin
+large = df["Total Sales"].idxmax
+
+print([large], int(df["Total Sales"]))
+
+
+# print(large)
 
 """
-small = df["Total Sales"].idmin
-large = df["Total Sales"].idmax
-
-print(small)
-print(large)
-"""
-
 print("Question 2")
 
 orange_beet = df.loc["Quantity Sold":"Total Sales", ["Orange", "Beets"]]
 
 
-print(orange_beet)
+print("\n The quantity and total sales for orange and beets:\n", orange_beet)
 
-"""
+
 print("Question 3")
 
-apple = df.loc[["Total Sales"], "Apples":"Lettuce"]
+# apple = df.loc[["Total Sales"], "Apples":"Lettuce"]
 
+apple = df.loc["Apples":"Lettuce", "Total Sales"]
 
 print(apple)
 
