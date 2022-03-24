@@ -61,32 +61,30 @@ small = df["Total Sales"].idxmin
 large = df["Total Sales"].idxmax
 
 # print([large], int(df["Total Sales"]))
+print("Lowest sales of produce:\n", small)
 
-"""
-# print(large)
+print("Largest sales of produce:\n", large)
 
 
 print("Question 2")
+# orange_beet = df.loc["Quantity Sold":"Total Sales", ["Orange", "Beets"]]
 
-orange_beet = df.loc["Quantity Sold":"Total Sales", ["Orange", "Beets"]]
+quant = df.loc[["Orange", "Beets"], ["Quantity Sold"]].sum
+sale = df.loc[["Orange", "Beets"], ["Total Sales"]].sum
 
 
-print("\n The quantity and total sales for orange and beets:\n", orange_beet)
+print("The quantity and total sales for orange and beets:\n", quant, sale)
 
 
 print("Question 3")
 
-# apple = df.loc[["Total Sales"], "Apples":"Lettuce"]
 
 apple = df.loc["Apples":"Lettuce", "Total Sales"]
 
 print("Total Sales from Apples to Lettuce: \n", apple)
 
 
-"""
-"""
 print("Questiion 4")
-
 
 
 app_quant = df.at["Apricots", "Quantity Sold"] = 11955
@@ -97,15 +95,13 @@ print("Apricots Quantity Sold:\n", app_quant)
 
 print("Apricots Total Sales:\n", app_sales)
 
-"""
-"""
 print("Question 5")
 
 
 avg = df["Quantity Sold"].mean()
 
 print("Average quantity sold across all products:\n", avg)
-"""
+
 print("Question 6")
 
 greater = df["Quantity Sold"] >= 11500
@@ -113,4 +109,11 @@ less = df["Quantity Sold"] <= 12000
 
 newdf = df[greater & less]
 
-print(newdf)
+print(" Produce with sales between 11500 and 12000: \n", newdf)
+
+
+print("Question 7")
+
+totalsales = newdf["Total Sales"].sum()
+
+print("Total sales in produce with sales between 11500 and 12000:\n", totalsales)
