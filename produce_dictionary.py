@@ -60,12 +60,12 @@ df["Total Sales"] = df["Total Sales"].astype(int)
 small = df["Total Sales"].idxmin
 large = df["Total Sales"].idxmax
 
-print([large], int(df["Total Sales"]))
-
-
-# print(large)
+# print([large], int(df["Total Sales"]))
 
 """
+# print(large)
+
+
 print("Question 2")
 
 orange_beet = df.loc["Quantity Sold":"Total Sales", ["Orange", "Beets"]]
@@ -80,15 +80,37 @@ print("Question 3")
 
 apple = df.loc["Apples":"Lettuce", "Total Sales"]
 
-print(apple)
+print("Total Sales from Apples to Lettuce: \n", apple)
 
 
-
+"""
+"""
 print("Questiion 4")
 
 
+
+app_quant = df.at["Apricots", "Quantity Sold"] = 11955
+
+app_sales = df.at["Apricots", "Total Sales"] = 44353.05
+
+print("Apricots Quantity Sold:\n", app_quant)
+
+print("Apricots Total Sales:\n", app_sales)
+
+"""
+"""
 print("Question 5")
 
-reg = df.mean["Quantity Sold"]
-print(reg)
+
+avg = df["Quantity Sold"].mean()
+
+print("Average quantity sold across all products:\n", avg)
 """
+print("Question 6")
+
+greater = df["Quantity Sold"] >= 11500
+less = df["Quantity Sold"] <= 12000
+
+newdf = df[greater & less]
+
+print(newdf)
